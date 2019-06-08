@@ -1,0 +1,10 @@
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\obj\Debug\Projekt_2_Grafika_Podejscie_2.csprojResolveAssemblyReference.cache
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\obj\Debug\Projekt_2_Grafika_Podejscie_2.Properties.Resources.resources
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\obj\Debug\Projekt_2_Grafika_Podejscie_2.csproj.GenerateResource.Cache
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\obj\Debug\Projekt_2_Grafika_Podejscie_2.csproj.CoreCompileInputs.cache
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\bin\Debug\Projekt_2_Grafika_Podejscie_2.exe.config
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\bin\Debug\Projekt_2_Grafika_Podejscie_2.exe
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\bin\Debug\Projekt_2_Grafika_Podejscie_2.pdb
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\obj\Debug\Projekt_2_Grafika_Podejscie_2.exe
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\obj\Debug\Projekt_2_Grafika_Podejscie_2.pdb
+C:\Users\Szym\source\repos\Projekt_2_Grafika_Podejscie_2\Projekt_2_Grafika_Podejscie_2\obj\Debug\Projekt_2_Grafika_Podejscie_2.Form1.resources

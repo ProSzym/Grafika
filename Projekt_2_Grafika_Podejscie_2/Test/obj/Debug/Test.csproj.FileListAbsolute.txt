@@ -1,0 +1,10 @@
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\bin\Debug\Test.exe.config
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\bin\Debug\Test.exe
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\bin\Debug\Test.pdb
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\bin\Debug\Projekt_2_Grafika_Podejscie_2.exe
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\bin\Debug\Projekt_2_Grafika_Podejscie_2.pdb
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\bin\Debug\Projekt_2_Grafika_Podejscie_2.exe.config
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\obj\Debug\Test.exe
+c:\users\szym\source\repos\Projekt_2_Grafika_Podejscie_2\Test\obj\Debug\Test.pdb
