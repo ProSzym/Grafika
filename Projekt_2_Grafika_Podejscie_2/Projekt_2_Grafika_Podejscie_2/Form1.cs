@@ -59,7 +59,6 @@ namespace Projekt_2_Grafika_Podejscie_2
             //this.scena.ObrocX(10.0);
             //this.scena.Obroc(10.0, 7.5, 2.5);
             //this.scena.Skaluj(2.0,2.0,2.0);
-            this.Focus();
             this.scena.Renderuj();
         }
 
@@ -108,19 +107,19 @@ namespace Projekt_2_Grafika_Podejscie_2
                     this.scena.Renderuj();
                     break;
                 case Keys.W:
-                    this.scena.ObrocX(1.0);
+                    this.scena.ObrocX(2.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.S:
-                    this.scena.ObrocX(-1.0);
+                    this.scena.ObrocX(-2.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.A:
-                    this.scena.ObrocY(1.0);
+                    this.scena.ObrocY(2.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.D:
-                    this.scena.ObrocY(-1.0);
+                    this.scena.ObrocY(-2.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.Q:

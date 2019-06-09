@@ -13,39 +13,21 @@ namespace Projekt_2_Grafika_Podejscie_2
         protected int bazowyX, bazowyY, bazowyZ;
 
         // składowe po operacjach, to będę rzutował na ekran i w tym przechowywał zrzutowane wartości
-        public double rzeczywistyX, rzeczywistyY, rzeczywistyZ, 
-            zrzutowanyX, zrzutowanyY, zrzutowanyZ;
+        public double rzeczywistyX, rzeczywistyY, rzeczywistyZ;
+        public double rzeczywistyZX, rzeczywistyZY, rzeczywistyZZ;
+        public int zrzutowanyX, zrzutowanyY, zrzutowanyZ;
 
         public Punkt(int x, int y, int z)
         {
-            this.bazowyX = x;
-            this.rzeczywistyX = this.bazowyX;
-
-            this.bazowyY = y;
-            this.rzeczywistyY = this.bazowyY;
-
-            this.bazowyZ = z;
-            this.rzeczywistyZ = this.bazowyZ;
-
-            this.zrzutowanyX = 0.0;
-            this.zrzutowanyY = 0.0;
-            this.zrzutowanyZ = 0.0;
-        }
-
-        public Punkt(double x, double y, double z)
-        {
-            this.zrzutowanyX = x;
-            this.zrzutowanyY = y;
-            this.zrzutowanyZ = z;
-
-            this.bazowyX = (int) x;
             this.rzeczywistyX = x;
-
-            this.bazowyY = (int)y;
+            this.rzeczywistyZX = x;
             this.rzeczywistyY = y;
-
-            this.bazowyZ = (int)z;
+            this.rzeczywistyZX = y;
             this.rzeczywistyZ = z;
+            this.rzeczywistyZX = z;
+            this.zrzutowanyX = (int)x;
+            this.zrzutowanyY = (int)y;
+            this.zrzutowanyZ = (int)z;
         }
 
         public int getbazowyX
@@ -137,28 +119,30 @@ namespace Projekt_2_Grafika_Podejscie_2
             }
             else
             {
-                this.zrzutowanyX = wynik[0, 0];
-                this.zrzutowanyY = wynik[0, 1];
-                this.zrzutowanyZ = wynik[0, 2];
+                this.rzeczywistyZX = wynik[0, 0];
+                this.rzeczywistyZY = wynik[0, 1];
+                this.rzeczywistyZZ = wynik[0, 2];
             }
         }
 
         public void skalujPunkt(int szerokosc, int wysokosc)
         {
-            this.zrzutowanyX = (int)((this.zrzutowanyX + 1.0) * 0.5 * (double)szerokosc);
-            this.zrzutowanyY = (int)((this.zrzutowanyY + 1.0) * 0.5 * (double)wysokosc);
+            this.zrzutowanyX = (int)((this.rzeczywistyZX + 1.0) * 0.5 * (double)szerokosc);
+            this.zrzutowanyY = (int)((this.rzeczywistyZY + 1.0) * 0.5 * (double)wysokosc);
         }
 
         public override string ToString()
         {
-            string toString = "Wartości bazowe: x = "+ getbazowyX + ", y = "+getbazowyY+", z = "+getbazowyZ+" \n";
-            toString += "Wartości rzeczywiste: x = "+rzeczywistyX+", y = "+rzeczywistyY+", z = "+rzeczywistyZ+" \n";
+            string toString = "Wartości rzeczywiste: x = " + rzeczywistyX + ", y = " + rzeczywistyY + ", z = " + rzeczywistyZ + " \n";
+            toString += "Wartości zrzutowane: x = "+rzeczywistyZX+", y = "+rzeczywistyZY+", z = "+rzeczywistyZZ+" \n";
+            toString += "Wartości zrzutowane w int: x = " + zrzutowanyX + ", y = " + zrzutowanyY + ", z = " + zrzutowanyZ + " \n";
+
             return toString;
         }
 
         public int CompareTo(Punkt other)
         {
-            return this.zrzutowanyX.CompareTo(other.zrzutowanyY);
+            return this.zrzutowanyY.CompareTo(other.zrzutowanyY);
         }
     }
 }

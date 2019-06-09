@@ -19,6 +19,10 @@ namespace Projekt_2_Grafika_Podejscie_2
             return posortowane;
         }
 
+        public Punkt P1 { get { return this.p1; } set { this.p1 = value; } }
+        public Punkt P2 { get { return this.p2; } set { this.p2 = value; } }
+        public Punkt P3 { get { return this.p3; } set { this.p3 = value; } }
+
         public Trojkat(Punkt p1, Punkt p2, Punkt p3)
         {
             this.p1 = p1;
@@ -61,14 +65,17 @@ namespace Projekt_2_Grafika_Podejscie_2
         // Posortowane tmp1.y <= tmp2.y <= tmp3.y
         public void WypelnijOdDolu(PictureBox pictureBox, Bitmap bitmap, Punkt tmp1, Punkt tmp2, Punkt tmp3)
         {
-            double invslope1 = (tmp2.zrzutowanyX - tmp1.zrzutowanyX) / (tmp2.zrzutowanyY - tmp1.zrzutowanyY);
-            double invslope2 = (tmp3.zrzutowanyX - tmp1.zrzutowanyX) / (tmp3.zrzutowanyY - tmp1.zrzutowanyY);
+            //MessageBox.Show(tmp1.ToString() + tmp2.ToString() + tmp3.ToString());
+            double invslope1 = (double)((double)(tmp2.zrzutowanyX - tmp1.zrzutowanyX) / (double)(tmp2.zrzutowanyY - tmp1.zrzutowanyY));
+            double invslope2 = (double)((double)(tmp3.zrzutowanyX - tmp1.zrzutowanyX) / (double)(tmp3.zrzutowanyY - tmp1.zrzutowanyY));
 
             double curx1 = tmp1.zrzutowanyX;
             double curx2 = tmp1.zrzutowanyX;
 
-            for (int scanlineY =(int) tmp1.zrzutowanyY; scanlineY <= (int) tmp2.zrzutowanyY; scanlineY++)
+            for (int scanlineY = tmp1.zrzutowanyY; scanlineY <= tmp2.zrzutowanyY; scanlineY++)
             {
+                //MessageBox.Show(scanlineY + ";" + tmp2.zrzutowanyY);
+                //MessageBox.Show((int)curx1+";"+scanlineY + ";" + (int)curx2 + ";" + scanlineY);
                 Projekt1.LiniaSrodek(pictureBox, bitmap, (int)curx1, scanlineY, (int)curx2, scanlineY);
                 curx1 += invslope1;
                 curx2 += invslope2;
@@ -77,13 +84,14 @@ namespace Projekt_2_Grafika_Podejscie_2
 
         public void WypelnijOdGory(PictureBox pictureBox, Bitmap bitmap, Punkt tmp1, Punkt tmp2, Punkt tmp3)
         {
-            double invslope1 = (tmp3.zrzutowanyX - tmp1.zrzutowanyX) / (tmp3.zrzutowanyY - tmp1.zrzutowanyY);
-            double invslope2 = (tmp3.zrzutowanyX - tmp2.zrzutowanyX) / (tmp3.zrzutowanyY - tmp2.zrzutowanyY);
+            //MessageBox.Show(tmp1.ToString()+tmp2.ToString()+tmp3.ToString());
+            double invslope1 = (double)((double)(tmp3.zrzutowanyX - tmp1.zrzutowanyX) / (double)(tmp3.zrzutowanyY - tmp1.zrzutowanyY));
+            double invslope2 = (double)((double)(tmp3.zrzutowanyX - tmp2.zrzutowanyX) / (double)(tmp3.zrzutowanyY - tmp2.zrzutowanyY));
 
-            double curx1 = tmp3.zrzutowanyX;
-            double curx2 = tmp3.zrzutowanyX;
+            double curx1 = (double)tmp3.zrzutowanyX;
+            double curx2 = (double)tmp3.zrzutowanyX;
 
-            for (int scanlineY = (int)tmp3.zrzutowanyY; scanlineY > (int)tmp1.zrzutowanyY; scanlineY--)
+            for (int scanlineY = tmp3.zrzutowanyY; scanlineY > tmp1.zrzutowanyY; scanlineY--)
             {
                 Projekt1.LiniaSrodek(pictureBox, bitmap, (int)curx1, scanlineY, (int)curx2, scanlineY);
                 curx1 -= invslope1;
@@ -91,36 +99,33 @@ namespace Projekt_2_Grafika_Podejscie_2
             }
         }
 
-        // http://www.sunshine2k.de/coding/java/TriangleRasterization/TriangleRasterization.html?fbclid=IwAR0ypsoe3L16vNtGcICtqOWIvbuk4nO3xJst6R2yPINn4aQ4tvLvv-2b3lI
         public void Wypelnij(PictureBox pictureBox, Bitmap bitMap) {
             Punkt[] posortowane = this.SortujPunktyPoY();
-            Punkt tmp1 = posortowane[0];
-            Punkt tmp2 = posortowane[1];
-            Punkt tmp3 = posortowane[2];
+            Punkt Tmp1 = posortowane[0];
+            Punkt Tmp2 = posortowane[1];
+            Punkt Tmp3 = posortowane[2];
 
-            if (tmp2.zrzutowanyY == tmp3.zrzutowanyY)
+            if (Tmp2.zrzutowanyY == Tmp3.zrzutowanyY)
             {
-                WypelnijOdDolu(pictureBox, bitMap, tmp1, tmp2, tmp3);
+                WypelnijOdDolu(pictureBox, bitMap, Tmp1, Tmp2, Tmp3);
             }
-            else if (tmp1.zrzutowanyY == tmp2.zrzutowanyY)
+            else if (Tmp1.zrzutowanyY == Tmp2.zrzutowanyY)
             {
-                WypelnijOdGory(pictureBox, bitMap, tmp1, tmp2, tmp3);
+                WypelnijOdGory(pictureBox, bitMap, Tmp1, Tmp2, Tmp3);
             }
-            
             else {
-                Punkt tmp4 = new Punkt(
-                    (int)tmp1.zrzutowanyX + ((tmp2.zrzutowanyY - tmp1.zrzutowanyY)/(tmp3.zrzutowanyY - tmp1.zrzutowanyY)) * (tmp3.zrzutowanyX - tmp1.zrzutowanyX),
-                    tmp2.zrzutowanyY, 
-                    0.0
+                Punkt Tmp4 = new Punkt(
+                        (int)((double)Tmp1.zrzutowanyX + ((double)(Tmp2.zrzutowanyY - Tmp1.zrzutowanyY) / (double)(Tmp3.zrzutowanyY - Tmp1.zrzutowanyY)) * (double)(Tmp3.zrzutowanyX - Tmp1.zrzutowanyX)),
+                        Tmp2.zrzutowanyY, 
+                        0
                     );
-                WypelnijOdDolu(pictureBox, bitMap, tmp1, tmp2, tmp4);
-                WypelnijOdGory(pictureBox, bitMap, tmp2, tmp4, tmp3);
+                //MessageBox.Show(tmp1.ToString()+ tmp2.ToString()+ tmp3.ToString()+tmp4.ToString());
+                Projekt1.LiniaSrodek(pictureBox, bitMap, Tmp2.zrzutowanyX, Tmp2.zrzutowanyY, Tmp4.zrzutowanyX, Tmp4.zrzutowanyY);
+                WypelnijOdDolu(pictureBox, bitMap, Tmp1, Tmp2, Tmp4);
+                WypelnijOdGory(pictureBox, bitMap, Tmp2, Tmp4, Tmp3);
             }
-            
         }
-
-        public void RysujTrojkat(PictureBox pictureBox, Bitmap bitMap, double[,] macierzRzutowania)
-        {
+        public void RzutujTrojkat(PictureBox pictureBox, Bitmap bitMap, double[,] macierzRzutowania) {
             this.p1.RzutujPunkt(macierzRzutowania);
             this.p2.RzutujPunkt(macierzRzutowania);
             this.p3.RzutujPunkt(macierzRzutowania);
@@ -128,11 +133,13 @@ namespace Projekt_2_Grafika_Podejscie_2
             p1.skalujPunkt(bitMap.Width, bitMap.Height);
             p2.skalujPunkt(bitMap.Width, bitMap.Height);
             p3.skalujPunkt(bitMap.Width, bitMap.Height);
+        }
 
-            Projekt1.LiniaSrodek(pictureBox, bitMap, (int)p1.zrzutowanyX, (int)p1.zrzutowanyY, (int)p2.zrzutowanyX, (int)p2.zrzutowanyY);
-            Projekt1.LiniaSrodek(pictureBox, bitMap, (int)p2.zrzutowanyX, (int)p2.zrzutowanyY, (int)p3.zrzutowanyX, (int)p3.zrzutowanyY);
-            Projekt1.LiniaSrodek(pictureBox, bitMap, (int)p1.zrzutowanyX, (int)p1.zrzutowanyY, (int)p3.zrzutowanyX, (int)p3.zrzutowanyY);
-
+        public void RysujTrojkat(PictureBox pictureBox, Bitmap bitMap, double[,] macierzRzutowania)
+        {
+            Projekt1.LiniaSrodek(pictureBox, bitMap, p1.zrzutowanyX, p1.zrzutowanyY, p2.zrzutowanyX, p2.zrzutowanyY);
+            Projekt1.LiniaSrodek(pictureBox, bitMap, p2.zrzutowanyX, p2.zrzutowanyY, p3.zrzutowanyX, p3.zrzutowanyY);
+            Projekt1.LiniaSrodek(pictureBox, bitMap, p1.zrzutowanyX, p1.zrzutowanyY, p3.zrzutowanyX, p3.zrzutowanyY);
             this.Wypelnij(pictureBox, bitMap);
         }
     }

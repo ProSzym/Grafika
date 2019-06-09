@@ -41,7 +41,13 @@ namespace Projekt_2_Grafika_Podejscie_2
         {
             foreach (Trojkat trojkat in trojkaty)
             {
-                if (trojkat.LiczNormalna()[2] < 0)
+                trojkat.RzutujTrojkat(pictureBox, bitMap, macierzRzutowania);
+                
+                if (trojkat.LiczNormalna()[0] * (trojkat.P1.rzeczywistyZX) +
+                    trojkat.LiczNormalna()[1] * (trojkat.P1.rzeczywistyZY) +
+                    trojkat.LiczNormalna()[2] * (trojkat.P1.rzeczywistyZZ) < 0)
+                
+                //if(trojkat.LiczNormalna()[2] < 0)
                 {
                     trojkat.RysujTrojkat(pictureBox, bitMap, macierzRzutowania);
                 }
