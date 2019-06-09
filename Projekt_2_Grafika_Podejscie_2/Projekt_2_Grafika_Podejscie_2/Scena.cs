@@ -66,14 +66,6 @@ namespace Projekt_2_Grafika_Podejscie_2
             }
         }
 
-        public void ObrocXZ(double katObrotuX, double katObrotuZ) {
-            double[,] macierzObrotu = Macierze.MnozMacierze(Macierze.getMacierzObrotuX(katObrotuX),Macierze.getMacierzObrotuZ(katObrotuZ));
-            foreach (Figura figura in figury)
-            {
-                figura.ObrocFigure(macierzObrotu);
-            }
-        }
-
         public void Obroc(double katObrotuX, double katObrotuY, double katObrotuZ) {
             double[,] macierzObrotu = Macierze.MnozMacierze(Macierze.getMacierzObrotuX(katObrotuX), Macierze.getMacierzObrotuY(katObrotuY));
             macierzObrotu = Macierze.MnozMacierze(Macierze.getMacierzObrotuZ(katObrotuZ), macierzObrotu);
@@ -100,9 +92,9 @@ namespace Projekt_2_Grafika_Podejscie_2
             }
         }
 
+        // Zmienione, ma figurach nie działał malarz
         public void Renderuj()
         {
-            //this.figury.Sort();
             List <Trojkat> doWyswietlenia = new List<Trojkat>(); 
             this.bitmap = new Bitmap(this.bitmap.Width, this.bitmap.Height);
             this.pictureBox.Image = (Image)this.bitmap;
@@ -122,11 +114,18 @@ namespace Projekt_2_Grafika_Podejscie_2
                 //figura.RysujFigure(this.pictureBox, this.bitmap, this.macierzRzutowania, this.oswietlenie);
             }
             doWyswietlenia.Sort();
+            doWyswietlenia.Reverse();
+            double[] oswietlenieZnormalizowane = new double[3];
+            double dlugosc = Math.Sqrt(Math.Pow(this.oswietlenie[0],2) + Math.Pow(this.oswietlenie[1],2) + Math.Pow(this.oswietlenie[2],2));
+            oswietlenieZnormalizowane[0] = (oswietlenie[0] / dlugosc);
+            oswietlenieZnormalizowane[1] = (oswietlenie[1] / dlugosc);
+            oswietlenieZnormalizowane[2] = (oswietlenie[2] / dlugosc);
+
             foreach (Trojkat trojkat in doWyswietlenia)
             {
                 double[] normalna = trojkat.LiczNormalna();
-                double oswietlenie = normalna[0] * this.oswietlenie[0] + normalna[1] * this.oswietlenie[1] + normalna[2] * this.oswietlenie[2];
-                int[] kolor = new int[] { 0, 0, 55 + (int)(200 * oswietlenie) };
+                double oswietlenie = normalna[0] * oswietlenieZnormalizowane[0] + normalna[1] * oswietlenieZnormalizowane[1] + normalna[2] * oswietlenieZnormalizowane[2];
+                int[] kolor = new int[] { 0, 0, 55 + (int)(200 * Math.Abs(oswietlenie)) };
                 trojkat.RysujTrojkat(pictureBox, bitmap, macierzRzutowania, kolor);
             }
         }

@@ -52,6 +52,7 @@ namespace Projekt_2_Grafika_Podejscie_2
             scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(-0.3, 0.2, -0.3), 0.6, 0.3, 0.6));
             scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(-0.05, 0.3, -1.0), 0.1, 0.1, 0.7));
 
+            //this.label2.Text = this.scena.oswietlenie[0] + "; " + this.scena.oswietlenie[1] + "; " + this.scena.oswietlenie[2];
             //this.scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(0.5, 0.5, -1.75),1,1,1));
             //this.scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(0.5, 0.5, -0.5), 1, 1, 1));
             //this.scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(0.5, 0.5, 1.25), 1, 1, 1));
@@ -76,12 +77,12 @@ namespace Projekt_2_Grafika_Podejscie_2
             //this.scena.ObrocX(2.0);
             //this.scena.ObrocY(1.5);
             //this.scena.Przesun(0.0, 0.0, -2.0);
-            //this.scena.Obroc(1.0, 1.5, 0.5);
+            this.scena.Obroc(3.0, 2.0, 1.0);
             //this.scena.ObrocZ(1.5);
             //this.scena.ObrocX(2.0);
             //this.scena.Przesun(0.0, 0.0,2.0);
 
-            //this.scena.Renderuj();
+            this.scena.Renderuj();
         }
 
         private void Form1_MouseWheel(object sender, MouseEventArgs e)
@@ -116,27 +117,27 @@ namespace Projekt_2_Grafika_Podejscie_2
                     this.scena.Renderuj();
                     break;
                 case Keys.W:
-                    this.scena.ObrocX(2.0);
+                    this.scena.ObrocX(3.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.S:
-                    this.scena.ObrocX(-2.0);
+                    this.scena.ObrocX(-3.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.A:
-                    this.scena.ObrocY(2.0);
+                    this.scena.ObrocY(3.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.D:
-                    this.scena.ObrocY(-2.0);
+                    this.scena.ObrocY(-3.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.Q:
-                    this.scena.ObrocZ(1.0);
+                    this.scena.ObrocZ(2.0);
                     this.scena.Renderuj();
                     break;
                 case Keys.E:
-                    this.scena.ObrocZ(-1.0);
+                    this.scena.ObrocZ(-2.0);
                     this.scena.Renderuj();
                     break;
             }

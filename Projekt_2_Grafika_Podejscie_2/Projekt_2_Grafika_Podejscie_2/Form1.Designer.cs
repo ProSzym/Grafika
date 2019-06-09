@@ -48,7 +48,7 @@ namespace Projekt_2_Grafika_Podejscie_2
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 15;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
@@ -64,7 +64,6 @@ namespace Projekt_2_Grafika_Podejscie_2
             this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseWheel);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            //this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseWheel);
 
         }
 

@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Projekt_2_Grafika_Podejscie_2;
-using Projekt_2_Grafika_Podejscie_2;
+
 namespace Test
 {
     class Program
     {
         static void Main(string[] args)
         {
+            /*
             double rzutnia1 = 0.1;
             double rzutnia2 = 1000.0;
             double katWidzenia = 90.0;
@@ -30,7 +31,7 @@ namespace Test
             }
             //p1.PrzesunPunkt(Macierze.getMacierzPrzesuniecia(0.0,-10.0,10.0));
             //p1.ObrocPunkt(Macierze.getMacierzObrotuY(10));
-            /*
+            
             for (int i = 0; i < 10; i++)
             {
                 p1.ObrocPunkt(Macierze.getMacierzObrotuX(10*i));
@@ -38,7 +39,7 @@ namespace Test
                 Console.WriteLine(p1.ToString());
                 Console.WriteLine(p2.ToString());
             }
-            */
+            
             //p1.ObrocPunkt(Macierze.getMacierzObrotuX(10));
             //p2.ObrocPunkt(Macierze.getMacierzObrotuX(10));
             //p1.RzutujPunkt(Macierze.getMacierzRzutowania(proporcjeSceny, poleWidzenia, rzutnia1, rzutnia2));
@@ -55,8 +56,8 @@ namespace Test
                 }
                 Console.WriteLine();
             }
-            */
             Console.ReadKey();
+            */
         }
     }
 }

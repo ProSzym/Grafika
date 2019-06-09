@@ -74,6 +74,7 @@ namespace Projekt_2_Grafika_Podejscie_2
             }
         }
 
+        /*
         public void RysujFigure(PictureBox pictureBox, Bitmap bitMap, double[,] macierzRzutowania, double[] oswietlenieZnormalizowane)
         {
             foreach (Trojkat trojkat in trojkaty)
@@ -90,5 +91,6 @@ namespace Projekt_2_Grafika_Podejscie_2
                 }
             }
         }
+        */
     }
 }

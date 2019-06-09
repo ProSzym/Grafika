@@ -62,10 +62,10 @@ namespace Projekt_2_Grafika_Podejscie_2
             return normalna;
         }
 
+        // Wypełnianie trójkąta
         // Posortowane tmp1.y <= tmp2.y <= tmp3.y
         public void WypelnijOdDolu(PictureBox pictureBox, Bitmap bitmap, Punkt tmp1, Punkt tmp2, Punkt tmp3, Color kolor)
         {
-            //MessageBox.Show(tmp1.ToString() + tmp2.ToString() + tmp3.ToString());
             double invslope1 = (double)((double)(tmp2.zrzutowanyX - tmp1.zrzutowanyX) / (double)(tmp2.zrzutowanyY - tmp1.zrzutowanyY));
             double invslope2 = (double)((double)(tmp3.zrzutowanyX - tmp1.zrzutowanyX) / (double)(tmp3.zrzutowanyY - tmp1.zrzutowanyY));
 
@@ -74,8 +74,6 @@ namespace Projekt_2_Grafika_Podejscie_2
 
             for (int scanlineY = tmp1.zrzutowanyY; scanlineY <= tmp2.zrzutowanyY; scanlineY++)
             {
-                //MessageBox.Show(scanlineY + ";" + tmp2.zrzutowanyY);
-                //MessageBox.Show((int)curx1+";"+scanlineY + ";" + (int)curx2 + ";" + scanlineY);
                 Projekt1.LiniaSrodek(pictureBox, bitmap, (int)curx1, scanlineY, (int)curx2, scanlineY, kolor);
                 curx1 += invslope1;
                 curx2 += invslope2;
@@ -84,7 +82,6 @@ namespace Projekt_2_Grafika_Podejscie_2
 
         public void WypelnijOdGory(PictureBox pictureBox, Bitmap bitmap, Punkt tmp1, Punkt tmp2, Punkt tmp3, Color kolor)
         {
-            //MessageBox.Show(tmp1.ToString()+tmp2.ToString()+tmp3.ToString());
             double invslope1 = (double)((double)(tmp3.zrzutowanyX - tmp1.zrzutowanyX) / (double)(tmp3.zrzutowanyY - tmp1.zrzutowanyY));
             double invslope2 = (double)((double)(tmp3.zrzutowanyX - tmp2.zrzutowanyX) / (double)(tmp3.zrzutowanyY - tmp2.zrzutowanyY));
 
@@ -119,12 +116,12 @@ namespace Projekt_2_Grafika_Podejscie_2
                         Tmp2.zrzutowanyY, 
                         0
                     );
-                //MessageBox.Show(tmp1.ToString()+ tmp2.ToString()+ tmp3.ToString()+tmp4.ToString());
-                Projekt1.LiniaSrodek(pictureBox, bitMap, Tmp2.zrzutowanyX, Tmp2.zrzutowanyY, Tmp4.zrzutowanyX, Tmp4.zrzutowanyY, kolorFromRgb);
+                //Projekt1.LiniaSrodek(pictureBox, bitMap, Tmp2.zrzutowanyX, Tmp2.zrzutowanyY, Tmp4.zrzutowanyX, Tmp4.zrzutowanyY, kolorFromRgb);
                 WypelnijOdDolu(pictureBox, bitMap, Tmp1, Tmp2, Tmp4, kolorFromRgb);
                 WypelnijOdGory(pictureBox, bitMap, Tmp2, Tmp4, Tmp3, kolorFromRgb);
             }
         }
+
         public void RzutujTrojkat(PictureBox pictureBox, Bitmap bitMap, double[,] macierzRzutowania) {
             this.p1.RzutujPunkt(macierzRzutowania);
             this.p2.RzutujPunkt(macierzRzutowania);
@@ -145,10 +142,11 @@ namespace Projekt_2_Grafika_Podejscie_2
 
         public double maxZ() {
             double maxZ = this.P1.rzeczywistyZ;
-            if (this.P2.rzeczywistyZ > maxZ) maxZ = this.P2.rzeczywistyZ;
-            if (this.P3.rzeczywistyZ > maxZ) maxZ = this.P3.rzeczywistyZ;
+            if (this.P2.rzeczywistyZZ > maxZ) maxZ = this.P2.rzeczywistyZZ;
+            if (this.P3.rzeczywistyZZ > maxZ) maxZ = this.P3.rzeczywistyZZ;
             return maxZ;
         }
+
         public int CompareTo(Trojkat other)
         {
             return this.maxZ().CompareTo(other.maxZ());

@@ -9,9 +9,13 @@ namespace Projekt_2_Grafika_Podejscie_2
 {
     public class Punkt :IComparable<Punkt>
     {
-        // składowe po operacjach, to będę rzutował na ekran i w tym przechowywał zrzutowane wartości
+        //Te wartości przekształcam
         public double rzeczywistyX, rzeczywistyY, rzeczywistyZ;
+
+        //Tu są zrzutowane wartości
         public double rzeczywistyZX, rzeczywistyZY, rzeczywistyZZ;
+
+        //Tu są zeskalowanie i zamienione na int - wartości przetłumaczone na punkty na bitmapie
         public int zrzutowanyX, zrzutowanyY, zrzutowanyZ;
 
         public Punkt(double x, double y, double z)
@@ -67,7 +71,6 @@ namespace Projekt_2_Grafika_Podejscie_2
                 this.rzeczywistyY = wynik[0, 1];
                 this.rzeczywistyZ = wynik[0, 2];             
             }
-            //MessageBox.Show(this.ToString());
         }
 
         public void RzutujPunkt(double[,] macierzRzutowania)
