@@ -116,7 +116,7 @@ namespace Projekt_2_Grafika_Podejscie_2
                         Tmp2.zrzutowanyY, 
                         0
                     );
-                //Projekt1.LiniaSrodek(pictureBox, bitMap, Tmp2.zrzutowanyX, Tmp2.zrzutowanyY, Tmp4.zrzutowanyX, Tmp4.zrzutowanyY, kolorFromRgb);
+                //Projekt1.LiniaSrodek(pictureBox, bitMap, Tmp2.zrzutowanyX, Tmp2.zrzutowanyY, Tmp4.zrzutowanyX, Tmp4.zrzutowanyY, Color.Black);
                 WypelnijOdDolu(pictureBox, bitMap, Tmp1, Tmp2, Tmp4, kolorFromRgb);
                 WypelnijOdGory(pictureBox, bitMap, Tmp2, Tmp4, Tmp3, kolorFromRgb);
             }
@@ -144,7 +144,7 @@ namespace Projekt_2_Grafika_Podejscie_2
             double maxZ = this.P1.rzeczywistyZ;
             if (this.P2.rzeczywistyZZ > maxZ) maxZ = this.P2.rzeczywistyZZ;
             if (this.P3.rzeczywistyZZ > maxZ) maxZ = this.P3.rzeczywistyZZ;
-            return maxZ;
+            return maxZ * 100;
         }
 
         public int CompareTo(Trojkat other)

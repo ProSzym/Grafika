@@ -31,7 +31,8 @@ namespace Projekt_2_Grafika_Podejscie_2
             this.macierzRzutowania = Macierze.getMacierzRzutowania((double)wyskokosc / (double)szerokosc,
                 1.0 / Math.Tan(Macierze.Radiany(0.5 * katWidzenia)), rzutnia1, rzutnia2);
 
-            this.oswietlenie = new double[] {0.0,0.0,-1.0};
+            //this.oswietlenie = new double[] { 0, 0.0, -5.0};
+            this.oswietlenie = new double[] { 10.0, 0.0, 5.0 };
         }
 
         public void dodajFigure(Figura figura)
@@ -123,9 +124,10 @@ namespace Projekt_2_Grafika_Podejscie_2
 
             foreach (Trojkat trojkat in doWyswietlenia)
             {
+                //MessageBox.Show(""+trojkat.maxZ());
                 double[] normalna = trojkat.LiczNormalna();
                 double oswietlenie = normalna[0] * oswietlenieZnormalizowane[0] + normalna[1] * oswietlenieZnormalizowane[1] + normalna[2] * oswietlenieZnormalizowane[2];
-                int[] kolor = new int[] { 0, 0, 55 + (int)(200 * Math.Abs(oswietlenie)) };
+                int[] kolor = new int[] { 0, 0, 150 + (int)(105 * oswietlenie) };
                 trojkat.RysujTrojkat(pictureBox, bitmap, macierzRzutowania, kolor);
             }
         }
