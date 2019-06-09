@@ -9,15 +9,12 @@ namespace Projekt_2_Grafika_Podejscie_2
 {
     public class Punkt :IComparable<Punkt>
     {
-        // stałe składowe, nie zmieniam ich
-        protected int bazowyX, bazowyY, bazowyZ;
-
         // składowe po operacjach, to będę rzutował na ekran i w tym przechowywał zrzutowane wartości
         public double rzeczywistyX, rzeczywistyY, rzeczywistyZ;
         public double rzeczywistyZX, rzeczywistyZY, rzeczywistyZZ;
         public int zrzutowanyX, zrzutowanyY, zrzutowanyZ;
 
-        public Punkt(int x, int y, int z)
+        public Punkt(double x, double y, double z)
         {
             this.rzeczywistyX = x;
             this.rzeczywistyZX = x;
@@ -28,40 +25,6 @@ namespace Projekt_2_Grafika_Podejscie_2
             this.zrzutowanyX = (int)x;
             this.zrzutowanyY = (int)y;
             this.zrzutowanyZ = (int)z;
-        }
-
-        public int getbazowyX
-        {
-            get
-            {
-                return this.bazowyX;
-            }
-        }
-
-        public int getbazowyY
-        {
-            get
-            {
-                return this.bazowyY;
-            }
-        }
-
-        public int getbazowyZ
-        {
-            get
-            {
-                return this.bazowyZ;
-            }
-        }
-
-        public double[,] getWektor
-        {
-            get
-            {
-                return new double[,] {
-                    { (double)this.getbazowyX, (double)this.getbazowyY , (double)this.getbazowyZ, 1.0 }
-                };
-            }
         }
 
         public double[,] getWektorRzeczywisty

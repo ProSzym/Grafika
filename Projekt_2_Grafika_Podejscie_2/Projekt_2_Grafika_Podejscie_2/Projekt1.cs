@@ -10,63 +10,7 @@ namespace Projekt_2_Grafika_Podejscie_2
 {
     public static class Projekt1
     {
-        public static void LiniaPrzyrostowa(PictureBox p, Bitmap b, int x0, int y0, int x1, int y1)
-        {
-            float dx, dy, m;
-
-            // Zamiana zmiennych
-            if (x0 > x1 && Math.Abs(x1 - x0) > Math.Abs(y1 - y0))
-            {
-                int tmp = x0;
-                x0 = x1;
-                x1 = tmp;
-
-                tmp = y0;
-                y0 = y1;
-                y1 = tmp;
-            }
-            else if (y0 > y1 && Math.Abs(x1 - x0) < Math.Abs(y1 - y0))
-            {
-                int tmp = x0;
-                x0 = x1;
-                x1 = tmp;
-
-                tmp = y0;
-                y0 = y1;
-                y1 = tmp;
-            }
-            dy = y1 - y0;
-            dx = x1 - x0;
-
-            // Rysowanie po X
-            if (dy < dx)
-            {
-
-                m = dy / dx;
-                float y = y0;
-                for (int x = x0; x <= x1; x++)
-                {
-                    b.SetPixel(x, (int)Math.Floor(y + 0.5), Color.Black);
-                    y += m;
-                }
-            }
-            // Rysowanie po Y
-            else
-            {
-                m = dx / dy;
-                float x = x0;
-                for (int y = y0; y <= y1; y++)
-                {
-                    b.SetPixel((int)Math.Floor(x + 0.5), y, Color.Black);
-                    x += m;
-                }
-            }
-
-            // Wyświetl
-            p.Image = (Image)b;
-        }
-
-        public static void LiniaSrodek(PictureBox p, Bitmap b, int x0, int y0, int x1, int y1)
+        public static void LiniaSrodek(PictureBox p, Bitmap b, int x0, int y0, int x1, int y1, Color kolor)
         {
             // zmienne pomocnicze
             int d, dx, dy, ai, bi, xi, yi;
@@ -94,7 +38,7 @@ namespace Projekt_2_Grafika_Podejscie_2
                 dy = y0 - y1;
             }
             // Piksel początkowy
-            if (x > 0 && y > 0 && x < b.Width && y < b.Height) b.SetPixel(x, y, Color.Blue);
+            if (x > 0 && y > 0 && x < b.Width && y < b.Height) b.SetPixel(x, y, kolor);
 
             // Rysowanie po X
             if (dx > dy)
@@ -117,7 +61,7 @@ namespace Projekt_2_Grafika_Podejscie_2
                         d += bi;
                         x += xi;
                     }
-                    if (x > 0 && y > 0 && x < b.Width && y < b.Height) b.SetPixel(x, y, Color.Blue);
+                    if (x > 0 && y > 0 && x < b.Width && y < b.Height) b.SetPixel(x, y, kolor);
                 }
             }
 
@@ -142,7 +86,7 @@ namespace Projekt_2_Grafika_Podejscie_2
                         d += bi;
                         y += yi;
                     }
-                    if (x > 0 && y > 0 && x < b.Width && y < b.Height) b.SetPixel(x, y, Color.Blue);
+                    if (x > 0 && y > 0 && x < b.Width && y < b.Height) b.SetPixel(x, y, kolor);
                 }
             }
             // Wyświetl

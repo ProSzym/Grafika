@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Projekt_2_Grafika_Podejscie_2
 {
-    public class Trojkat
+    public class Trojkat :IComparable<Trojkat>
     {
         Punkt p1, p2, p3;
 
@@ -63,7 +63,7 @@ namespace Projekt_2_Grafika_Podejscie_2
         }
 
         // Posortowane tmp1.y <= tmp2.y <= tmp3.y
-        public void WypelnijOdDolu(PictureBox pictureBox, Bitmap bitmap, Punkt tmp1, Punkt tmp2, Punkt tmp3)
+        public void WypelnijOdDolu(PictureBox pictureBox, Bitmap bitmap, Punkt tmp1, Punkt tmp2, Punkt tmp3, Color kolor)
         {
             //MessageBox.Show(tmp1.ToString() + tmp2.ToString() + tmp3.ToString());
             double invslope1 = (double)((double)(tmp2.zrzutowanyX - tmp1.zrzutowanyX) / (double)(tmp2.zrzutowanyY - tmp1.zrzutowanyY));
@@ -76,13 +76,13 @@ namespace Projekt_2_Grafika_Podejscie_2
             {
                 //MessageBox.Show(scanlineY + ";" + tmp2.zrzutowanyY);
                 //MessageBox.Show((int)curx1+";"+scanlineY + ";" + (int)curx2 + ";" + scanlineY);
-                Projekt1.LiniaSrodek(pictureBox, bitmap, (int)curx1, scanlineY, (int)curx2, scanlineY);
+                Projekt1.LiniaSrodek(pictureBox, bitmap, (int)curx1, scanlineY, (int)curx2, scanlineY, kolor);
                 curx1 += invslope1;
                 curx2 += invslope2;
             }
         }
 
-        public void WypelnijOdGory(PictureBox pictureBox, Bitmap bitmap, Punkt tmp1, Punkt tmp2, Punkt tmp3)
+        public void WypelnijOdGory(PictureBox pictureBox, Bitmap bitmap, Punkt tmp1, Punkt tmp2, Punkt tmp3, Color kolor)
         {
             //MessageBox.Show(tmp1.ToString()+tmp2.ToString()+tmp3.ToString());
             double invslope1 = (double)((double)(tmp3.zrzutowanyX - tmp1.zrzutowanyX) / (double)(tmp3.zrzutowanyY - tmp1.zrzutowanyY));
@@ -93,25 +93,25 @@ namespace Projekt_2_Grafika_Podejscie_2
 
             for (int scanlineY = tmp3.zrzutowanyY; scanlineY > tmp1.zrzutowanyY; scanlineY--)
             {
-                Projekt1.LiniaSrodek(pictureBox, bitmap, (int)curx1, scanlineY, (int)curx2, scanlineY);
+                Projekt1.LiniaSrodek(pictureBox, bitmap, (int)curx1, scanlineY, (int)curx2, scanlineY, kolor);
                 curx1 -= invslope1;
                 curx2 -= invslope2;
             }
         }
 
-        public void Wypelnij(PictureBox pictureBox, Bitmap bitMap) {
+        public void Wypelnij(PictureBox pictureBox, Bitmap bitMap, int[] kolor) {
             Punkt[] posortowane = this.SortujPunktyPoY();
             Punkt Tmp1 = posortowane[0];
             Punkt Tmp2 = posortowane[1];
             Punkt Tmp3 = posortowane[2];
-
+            Color kolorFromRgb = Color.FromArgb(kolor[0], kolor[1], kolor[2]); ;
             if (Tmp2.zrzutowanyY == Tmp3.zrzutowanyY)
             {
-                WypelnijOdDolu(pictureBox, bitMap, Tmp1, Tmp2, Tmp3);
+                WypelnijOdDolu(pictureBox, bitMap, Tmp1, Tmp2, Tmp3, kolorFromRgb);
             }
             else if (Tmp1.zrzutowanyY == Tmp2.zrzutowanyY)
             {
-                WypelnijOdGory(pictureBox, bitMap, Tmp1, Tmp2, Tmp3);
+                WypelnijOdGory(pictureBox, bitMap, Tmp1, Tmp2, Tmp3, kolorFromRgb);
             }
             else {
                 Punkt Tmp4 = new Punkt(
@@ -120,9 +120,9 @@ namespace Projekt_2_Grafika_Podejscie_2
                         0
                     );
                 //MessageBox.Show(tmp1.ToString()+ tmp2.ToString()+ tmp3.ToString()+tmp4.ToString());
-                Projekt1.LiniaSrodek(pictureBox, bitMap, Tmp2.zrzutowanyX, Tmp2.zrzutowanyY, Tmp4.zrzutowanyX, Tmp4.zrzutowanyY);
-                WypelnijOdDolu(pictureBox, bitMap, Tmp1, Tmp2, Tmp4);
-                WypelnijOdGory(pictureBox, bitMap, Tmp2, Tmp4, Tmp3);
+                Projekt1.LiniaSrodek(pictureBox, bitMap, Tmp2.zrzutowanyX, Tmp2.zrzutowanyY, Tmp4.zrzutowanyX, Tmp4.zrzutowanyY, kolorFromRgb);
+                WypelnijOdDolu(pictureBox, bitMap, Tmp1, Tmp2, Tmp4, kolorFromRgb);
+                WypelnijOdGory(pictureBox, bitMap, Tmp2, Tmp4, Tmp3, kolorFromRgb);
             }
         }
         public void RzutujTrojkat(PictureBox pictureBox, Bitmap bitMap, double[,] macierzRzutowania) {
@@ -135,12 +135,23 @@ namespace Projekt_2_Grafika_Podejscie_2
             p3.skalujPunkt(bitMap.Width, bitMap.Height);
         }
 
-        public void RysujTrojkat(PictureBox pictureBox, Bitmap bitMap, double[,] macierzRzutowania)
+        public void RysujTrojkat(PictureBox pictureBox, Bitmap bitMap, double[,] macierzRzutowania, int[] kolor)
         {
-            Projekt1.LiniaSrodek(pictureBox, bitMap, p1.zrzutowanyX, p1.zrzutowanyY, p2.zrzutowanyX, p2.zrzutowanyY);
-            Projekt1.LiniaSrodek(pictureBox, bitMap, p2.zrzutowanyX, p2.zrzutowanyY, p3.zrzutowanyX, p3.zrzutowanyY);
-            Projekt1.LiniaSrodek(pictureBox, bitMap, p1.zrzutowanyX, p1.zrzutowanyY, p3.zrzutowanyX, p3.zrzutowanyY);
-            this.Wypelnij(pictureBox, bitMap);
+            //Projekt1.LiniaSrodek(pictureBox, bitMap, p1.zrzutowanyX, p1.zrzutowanyY, p2.zrzutowanyX, p2.zrzutowanyY);
+            //Projekt1.LiniaSrodek(pictureBox, bitMap, p2.zrzutowanyX, p2.zrzutowanyY, p3.zrzutowanyX, p3.zrzutowanyY);
+            //Projekt1.LiniaSrodek(pictureBox, bitMap, p1.zrzutowanyX, p1.zrzutowanyY, p3.zrzutowanyX, p3.zrzutowanyY);
+            this.Wypelnij(pictureBox, bitMap, kolor);
+        }
+
+        public double maxZ() {
+            double maxZ = this.P1.rzeczywistyZ;
+            if (this.P2.rzeczywistyZ > maxZ) maxZ = this.P2.rzeczywistyZ;
+            if (this.P3.rzeczywistyZ > maxZ) maxZ = this.P3.rzeczywistyZ;
+            return maxZ;
+        }
+        public int CompareTo(Trojkat other)
+        {
+            return this.maxZ().CompareTo(other.maxZ());
         }
     }
 }

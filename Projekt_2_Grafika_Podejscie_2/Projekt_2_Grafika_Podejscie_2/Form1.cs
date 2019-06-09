@@ -18,6 +18,7 @@ namespace Projekt_2_Grafika_Podejscie_2
         {
             InitializeComponent();
 
+            /*
             // Dane inicjalizujące
             Figura figura = new Figura();
 
@@ -44,9 +45,16 @@ namespace Projekt_2_Grafika_Podejscie_2
             // Dół
             figura.dodajTrojkat(new Trojkat(new Punkt(1, 0, 1), new Punkt(0, 0, 1), new Punkt(0, 0, 0)));
             figura.dodajTrojkat(new Trojkat(new Punkt(1, 0, 1), new Punkt(0, 0, 0), new Punkt(1, 0, 0)));
+            */
 
             this.scena = new Scena(900, 700, this.pictureBox1);
-            scena.dodajFigure(figura);
+            scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(-0.5,0.5,-1.0),1,0.3,2));
+            scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(-0.3, 0.2, -0.3), 0.6, 0.3, 0.6));
+            scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(-0.05, 0.3, -1.0), 0.1, 0.1, 0.7));
+
+            //this.scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(0.5, 0.5, -1.75),1,1,1));
+            //this.scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(0.5, 0.5, -0.5), 1, 1, 1));
+            //this.scena.dodajFigure(Figura.generujProstopadloscian(new Punkt(0.5, 0.5, 1.25), 1, 1, 1));
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -72,6 +80,7 @@ namespace Projekt_2_Grafika_Podejscie_2
             //this.scena.ObrocZ(1.5);
             //this.scena.ObrocX(2.0);
             //this.scena.Przesun(0.0, 0.0,2.0);
+
             //this.scena.Renderuj();
         }
 

@@ -14,6 +14,7 @@ namespace Projekt_2_Grafika_Podejscie_2
         public Bitmap bitmap;
         public List<Figura> figury;
         public double[,] macierzRzutowania;
+        public double [] oswietlenie;
 
         public Scena(int szerokosc, int wyskokosc, PictureBox pictureBox)
         {
@@ -29,6 +30,8 @@ namespace Projekt_2_Grafika_Podejscie_2
 
             this.macierzRzutowania = Macierze.getMacierzRzutowania((double)wyskokosc / (double)szerokosc,
                 1.0 / Math.Tan(Macierze.Radiany(0.5 * katWidzenia)), rzutnia1, rzutnia2);
+
+            this.oswietlenie = new double[] {0.0,0.0,-1.0};
         }
 
         public void dodajFigure(Figura figura)
@@ -99,11 +102,32 @@ namespace Projekt_2_Grafika_Podejscie_2
 
         public void Renderuj()
         {
+            //this.figury.Sort();
+            List <Trojkat> doWyswietlenia = new List<Trojkat>(); 
             this.bitmap = new Bitmap(this.bitmap.Width, this.bitmap.Height);
             this.pictureBox.Image = (Image)this.bitmap;
             foreach (Figura figura in figury)
             {
-                figura.RysujFigure(this.pictureBox, this.bitmap, this.macierzRzutowania);
+                foreach (Trojkat trojkat in figura.trojkaty)
+                {
+                    trojkat.RzutujTrojkat(pictureBox, bitmap, macierzRzutowania);
+                    double[] normalna = trojkat.LiczNormalna();
+                    if (normalna[0] * (trojkat.P1.rzeczywistyZX) +
+                        normalna[1] * (trojkat.P1.rzeczywistyZY) +
+                        normalna[2] * (trojkat.P1.rzeczywistyZZ) < 0)
+                    {
+                        doWyswietlenia.Add(trojkat);
+                    }
+                }
+                //figura.RysujFigure(this.pictureBox, this.bitmap, this.macierzRzutowania, this.oswietlenie);
+            }
+            doWyswietlenia.Sort();
+            foreach (Trojkat trojkat in doWyswietlenia)
+            {
+                double[] normalna = trojkat.LiczNormalna();
+                double oswietlenie = normalna[0] * this.oswietlenie[0] + normalna[1] * this.oswietlenie[1] + normalna[2] * this.oswietlenie[2];
+                int[] kolor = new int[] { 0, 0, 55 + (int)(200 * oswietlenie) };
+                trojkat.RysujTrojkat(pictureBox, bitmap, macierzRzutowania, kolor);
             }
         }
     }
